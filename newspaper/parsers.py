@@ -63,7 +63,7 @@ class Parser(object):
         # down due to one article (out of potentially many in a `Source`)
         try:
             # lxml does not play well with <? ?> encoding tags
-            if html.startswith('<?'):
+            if html.startswith(b'<?'):
                 html = re.sub(r'^\<\?.*?\?\>', '', html, flags=re.DOTALL)
             cls.doc = lxml.html.fromstring(html)
             return cls.doc
